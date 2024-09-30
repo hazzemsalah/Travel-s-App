@@ -5,7 +5,7 @@ class GetTrips {
   final TripRepository repository;
   GetTrips(this.repository);
 
-  Future<Trip> call(){
+  Future<List<Trip>> call(){
     return repository.getTrips();
   }
 }
