@@ -59,10 +59,12 @@ class TripListNotifier extends StateNotifier<List<Trip>> {
 
   Future<void> addNewTrip(Trip trip) async {
     await _addTrip(trip);
-    //state = [...state, trip];
+    state = [...state, trip];
   }
 
   Future<void> removeTrip(int tripId) async {
-    await _deleteTrip(tripId);
+    await _deleteTrip.call(tripId);
+    // state = List.from(state)..removeAt(tripId);
+    print('Trip removed at index: $tripId');
   }
 }

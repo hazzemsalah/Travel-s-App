@@ -109,8 +109,7 @@ class TravelCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        SizedBox(
-                          height: 10,
+                        Expanded(
                           child: IconButton(
                             icon: Icon(Icons.delete, color: Colors.red[700]),
                             onPressed: onDelete,

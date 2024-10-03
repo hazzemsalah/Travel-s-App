@@ -74,10 +74,24 @@ class AddTripScreen extends ConsumerWidget {
                       description: _descController.text,
                       location: _locationController.text,
                       date: DateTime.now(),
-                      photos: ['https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D'],
+                      photos: [
+                        'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D'
+                      ],
                     );
-                    ref.read(tripListNotifierProvider.notifier).addNewTrip(newTrip);
+                    ref
+                        .read(tripListNotifierProvider.notifier)
+                        .addNewTrip(newTrip);
                     ref.watch(tripListNotifierProvider.notifier).loadTrips();
+
+                    // clear controllers
+                    _titleController.clear();
+                    _descController.clear();
+                    _locationController.clear();
+
+                    // show a snack bar
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Trip Added Successfully')),
+                    );
                   }
                 },
                 child: const Text('Add Trip'),
